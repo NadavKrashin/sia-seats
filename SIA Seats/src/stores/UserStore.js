@@ -14,7 +14,9 @@ export const useUserStore = defineStore("user", () => {
       (currUsername) => currUsername !== username
     ));
 
-  const hasGameStarted = computed(() => connectedUsers.value.length === 10);
+  const hasGameStarted = computed(
+    () => new Set(connectedUsers.value).size === 10
+  );
 
   return {
     username,
